@@ -1,5 +1,5 @@
-###Perl
-#### sock.pl - Socket Programming
+##Perl
+### sock.pl - Socket Programming
 Start Server 
 
 	MacBook-Pro:perl sysroot$ ./sock.pl server
