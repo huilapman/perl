@@ -23,7 +23,6 @@ if ($type eq "server") {
 
 	die "Can't create socket: $!" unless $socket;
 
-	#my $connection = $socket->accept();
 	my $connection;
 	while ($connection = $socket->accept()) {
 		$connection->autoflush(1);
