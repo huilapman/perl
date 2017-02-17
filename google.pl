@@ -65,10 +65,11 @@ if ($q->param('code')) {
 	print "</html>";
 
 	# Redirect 
+=pod
 	print $q->header( -status=>'302',
 			-location=>'http://localhost/cgi-bin/google.pl?email=' . $infodecoded->{'email'},
 			-type  =>  'text/html');
-
+=cut
 }
 else {
 	if ($q->param('email')) {
