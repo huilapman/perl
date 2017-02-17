@@ -23,7 +23,7 @@ Switch to server
 
  1. Register Credential in Google Developer Console 
  2. Redirect URIs: http://localhost/cgi-bin/google.pl
- 3. Create file "google.ini"
+ 3. Update file "google.ini"
  4. Surf http://localhost/cgi-bin/google.pl in browser
  5. Click the login link
  6. Allow application to use your google profile
