@@ -1,4 +1,4 @@
 /bin
 .pid
 .DS_Store
-*.ini
+google.ini.gitignore
