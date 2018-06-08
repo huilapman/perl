@@ -1,4 +1,4 @@
-package ABC::WebServiceAPI;
+package ABC::PostServiceAPI;
 
 $VERSION = v1.0;
 
@@ -12,13 +12,13 @@ use HTTP::Request::Common qw{ POST };
 use Encode;
 use JSON;
 
-sub GetWebService {
+sub PostService {
     my $service = shift;
     my $data  = shift;
 
-    my $url = "https://webservice.abc.com/" . $service;
+    my $url = "https://postservice.abc.com/" . $service;
     print "========================================================\n";
-    print " ABC WebService API\n";
+    print " ABC PostService API\n";
     print "--------------------------------------------------------\n";
     print " Service Name: $service\n";
     print " URL: $url\n";
@@ -29,7 +29,7 @@ sub GetWebService {
     print " Result:\n";
     my $ua = LWP::UserAgent->new();
     my $headers = HTTP::Headers->new(
-            'Host' => 'webservice.abc.com',
+            'Host' => 'postservice.abc.com',
             'Content-Type' => 'application/x-www-form-urlencoded'
             );
 
@@ -73,7 +73,7 @@ sub GetMemberInfoByTelephone {
     my %param = (strCallUserCode => $strCallUserCode,
                 strCallPassword => $strCallPassword,
                 strTelephone => $strTelephone);
-    return GetWebService($service, \%param);
+    return PostService($service, \%param);
 }
 
 sub SendVerifyCode {
@@ -85,7 +85,7 @@ sub SendVerifyCode {
     my %param = (strCallUserCode => $strCallUserCode,
                 strCallPassword => $strCallPassword,
                 strTelephone => $strTelephone);
-    return GetWebService($service, \%param);
+    return PostService($service, \%param);
 
 =pod
     print "strCallUserCode: $strCallUserCode\n";
@@ -110,8 +110,8 @@ sub SendVerifyCode {
 #!/usr/bin/perl
 use strict;
 use lib qw(/usr/local/ABC/lib/perl);
-use ABC::WebServiceAPI;
-my $member = ABC::WebServiceAPI::GetMemberInfoByTelephone({strCallUserCode =>'username',
+use ABC::PostServiceAPI;
+my $member = ABC::PostServiceAPI::GetMemberInfoByTelephone({strCallUserCode =>'username',
                                                 strCallPassword => 'password',
                                                 strTelephone => '+12345678'});
 =cut
