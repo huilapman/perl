@@ -30,7 +30,8 @@ sub PostService {
     my $ua = LWP::UserAgent->new();
     my $headers = HTTP::Headers->new(
             'Host' => 'postservice.abc.com',
-            'Content-Type' => 'application/x-www-form-urlencoded'
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Accept' => 'application/json'
             );
 
     my $req = HTTP::Request::Common::POST($url, $data);
@@ -46,9 +47,7 @@ sub PostService {
     $ua->default_headers($headers);
     my $resp = $ua->request($req);
     if ($resp->is_success) {
-        my $message = $resp->decoded_content;
-        $message =~ m{<(.*)>(.*?)</(.*)>}i;
-        my $json_content = $2;
+        my $json_content = $resp->decoded_content;        
         Encode::_utf8_off($json_content);
         my $decoded = decode_json($json_content);
         print " " . $json->pretty->utf8->encode($decoded);
